@@ -30,7 +30,7 @@ export default class Coursecart extends Component {
                                                {node.title}
                                             </h6> 
                                             <h6 className="mb-0 text-success ml-4">
-                                               Rs. {node.price}
+                                               $ {node.price}
                                             </h6> 
                                         </div>
                                         <p className="text-muted">
