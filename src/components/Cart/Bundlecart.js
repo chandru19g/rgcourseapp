@@ -3,53 +3,53 @@ import Heading from '../reuseable/Heading'
 import Img from 'gatsby-image'
 import { node } from 'prop-types'
 
-const getCaty = items => {
-    let holdItems = items.map(items => {
-        return items.node.category
-    })
-    let holdcategories = new Set(holdItems)
-    let categories = Array.from(holdcategories)
-    categories = ["all", ...categories]
-    return categories
-}
+// const getCaty = items => {
+//     let holdItems = items.map(items => {
+//         return items.node.category
+//     })
+//     let holdcategories = new Set(holdItems)
+//     let categories = Array.from(holdcategories)
+//     categories = ["all", ...categories]
+//     return categories
+// }
 
 export default class Coursecart extends Component {
     constructor(props){
         super(props)
         this.state= {
-            courses: props.courses.edges,
-            mycourses: props.courses.edges,
-            mycategories: getCaty(props.courses.edges)
+            bundles: props.bundles.edges,
+            mybundles: props.bundles.edges,
+          //  mycategories: getCaty(props.bundles.edges)
         }
     }
 
-    catyClicked = category => {
-        let keepitsafe = [...this.state.courses]
+    // catyClicked = category => {
+    //     let keepitsafe = [...this.state.bundles]
 
-        if(category === 'all') {
-            this.setState(() => {
-                return{
-                    mycourses : keepitsafe
-                }
-            })
-        } else {
-            let holdme = keepitsafe.filter(({node}) => node.category === category)
-            this.setState(() => {
-                return{
-                    mycourses : holdme
-                }
-            })
-        }
-    }
+    //     if(category === 'all') {
+    //         this.setState(() => {
+    //             return{
+    //                 mybundles : keepitsafe
+    //             }
+    //         })
+    //     } else {
+    //         let holdme = keepitsafe.filter(({node}) => node.category === category)
+    //         this.setState(() => {
+    //             return{
+    //                 mybundles : holdme
+    //             }
+    //         })
+    //     }
+    // }
 
     render() {
         //console.log(this.state.courses)
         return (
            <section className="py-5">
                <div className="container">
-                    <Heading title="Courses"/>
-                    <div className="row my-3">
-                        <div className="col-10 mx-auto text-center">
+                    <Heading title="Bundles"/>
+                    {/* <div className="row my-3">
+                        {/* <div className="col-10 mx-auto text-center">
                             {this.state.mycategories.map((category, index) => {
                                 return(
                                     <button 
@@ -66,10 +66,10 @@ export default class Coursecart extends Component {
                             })
 
                             }
-                        </div>
-                    </div>
+                        </div> */}
+                    {/* </div>  */}
                     <div className="row">
-                        {this.state.mycourses.map(({node}) => {
+                        {this.state.mybundles.map(({node}) => {
                             return(
                                 <div
                                 key={node.id}
@@ -85,9 +85,6 @@ export default class Coursecart extends Component {
                                                $ {node.price}
                                             </h6> 
                                         </div>
-                                        <p className="text-muted">
-                                            <small>{node.description.description}</small>
-                                        </p>
                                         <button 
                                          data-item-id={node.id}
                                          data-item-price={node.price}
