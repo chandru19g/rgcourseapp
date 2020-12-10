@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'gatsby'
 import logo from '../../images/logo.png'
 import { FaCartArrowDown } from "react-icons/fa";
+import { VscMenu } from "react-icons/vsc";
 
 export default class Navbar extends Component {
    
@@ -43,7 +44,11 @@ export default class Navbar extends Component {
                     type="button"
                     onClick={this.myToggler}
                 >
-                    <span className="text-white">menu</span>
+                    <span>
+                        <Link to="/" className="nav-link text-white">
+                            <VscMenu className="cart-icon"/>
+                        </Link>
+                    </span>
                 </button>
                 <div className={this.state.navbarClass}>
                     <ul className="navbar-nav ml-auto mr-5">
